@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <style>
+      /* Navbar styling */
+      nav {
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+
+      .navbar-logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .navbar-items {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        text-decoration: none;
+      }
+
+      .navbar-items li a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #fff;
+      }
+      .navbar-items li a:hover {
+       color:#007bff
+      }
+
+      /* Media query for responsive design */
+      @media screen and (max-width: 768px) {
+        .navbar-items {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .navbar-items li {
+          margin: 10px 0;
+          text-decoration: none;
+        }
+      }
+      .add-btn {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding: 10px;
+      }
+      .btn {
+        background-color: #0056b3;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      /* Style for the "Add Blog" button */
+      .add-btn {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      /* Style for the blog list */
+      .blog-list {
+        text-align: center;
+      }
+
+      /* Style for each blog item */
+      .blog-item {
+        list-style: none;
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      /* Style for the "Update" and "Delete" links */
+      .update-link {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: auto;
+        justify-items: end;
+        display: flex;
+      }
+      .delete-link {
+        background-color: #bb2207;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: auto;
+        justify-items: end;
+        display: flex;
+      }
+
+      /* Style for the "Read" button */
+      .read-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
+      /* Add hover effect for the "Read" button */
+      .read-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar-logo">Blog</div>
+      <div>
+        <ul class="navbar-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="add-btn">
+        <a href="/blog/new">
+          <button class="btn">Add Blog</button>
+        </a>
+      </div>
+      <div class="blog-list">
+        <h1>POST</h1>
+        <ul>
+          <% docs.forEach(function(doc){ %>
+          <li class="blog-item">
+            Blog Item - <%= doc.title %>
+            <button class="update-link">
+              <a href="<%= '/blog/update/' + doc._id %>">
+                Update
+              </a>
+            </button>
+            <button class="delete-link">
+              <a href="<%= '/blog/delete/' + doc._id %>">
+              Delete
+              </a>
+            </button>
+            <button class="read-button">
+              <a href="<%= '/blog/View/' + doc._id %>">
+                View
+              </a>
+            </button>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

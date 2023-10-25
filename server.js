@@ -52,14 +52,29 @@ app.post('/blog/create', (req, res) => {
     
 });
 
-app.put('/blog/update/:id', (req, res) => {
-    const blogId = req.params.id;
+//Update Blog
+app.get('/blog/update/:id', (req, res) => {
+    const { id } = req.params;
+
+    // The same rules apply when you want to only find one document
+    db.findOne({ _id: id }, function (err, doc) {
+        // doc is the document Mars
+        if(err) res.redirect('/error', { error: 'Invalid ID passed to update' });
+        // If no document is found, doc is null
+        res.render('blog/edit', {
+            doc
+        });
+    });
+});
+
+app.post('/blog/update/:id', (req, res) => {
+    const { id } = req.params;
     const { title, description } = req.body;
 
     // Debugging: Check the values of blogId, title, and description
-    console.log('Updating Blog:', blogId, title, description);
+    console.log('Updating Blog:', id, title, description);
 
-    db.update({ _id: blogId }, { $set: { title, description } }, {}, function (err, numReplaced) {
+    db.update({ _id: id }, { $set: { title, description } }, {}, function (err, numReplaced) {
         if (err) {
             console.error('Error updating blog:', err);
             res.redirect('/error', { error: 'Unable to update blog' });

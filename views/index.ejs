@@ -1,57 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <style>
-        /* Navbar styling */
-        nav {
-            background-color: #333;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .navbar-logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .navbar-items {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-
-        .navbar-items li {
-            margin-right: 20px;
-            list-style: none;
-        }
-
-
-
- 
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="navbar-logo">
-            Blog
-        </div>
-        <div>
-            <ul class="navbar-items">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="bg-#333 text-white flex justify-between px-10 py-10">
+      <div class="text-2xl bold">Blog</div>
+      <div>
+        <ul class="list-none p-0 flex">
+          <li class="mr-10 list-none"><a href="/">Home</a></li>
+          <li class="mr-10 list-none"><a href="/about">About</a></li>
+          <li class="mr-10 list-none"><a href="/blog">Blog</a></li>
+          <li class="mr-10 list-none"><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
     </nav>
-   <main>
-   <h1> Home Page</h1>
-   </main>
-</body>
+    <main>
+      <h1 class="text-7xl text-red-600">Home Page</h1>
+    </main>
+  </body>
 </html>

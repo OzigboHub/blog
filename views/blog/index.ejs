@@ -4,169 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
-<link href="../output.css" rel="stylesheet" >
-    <style>
-      /* Navbar styling */
-      nav {
-        background-color: #333;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-      }
-
-      .navbar-logo {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .navbar-items {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        text-decoration: none;
-      }
-
-      .navbar-items li a {
-        margin-right: 20px;
-        text-decoration: none;
-        color: #fff;
-      }
-      .navbar-items li a:hover {
-       color:#007bff
-      }
-
-      /* Media query for responsive design */
-      @media screen and (max-width: 768px) {
-        .navbar-items {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .navbar-items li {
-          margin: 10px 0;
-          text-decoration: none;
-        }
-      }
-      .add-btn {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        padding: 10px;
-      }
-      .btn {
-        background-color: #0056b3;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-      /* Style for the "Add Blog" button */
-      .add-btn {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      /* Style for the blog list */
-      .blog-list {
-        text-align: center;
-      }
-
-      /* Style for each blog item */
-      .blog-item {
-        list-style: none;
-        border: 1px solid #ccc;
-        margin: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-      }
-
-      /* Style for the "Update" and "Delete" links */
-      .update-link {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        margin-left: auto;
-        justify-items: end;
-        display: flex;
-      }
-      .delete-link {
-        background-color: #bb2207;
-        color: #fff;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        margin-left: auto;
-        justify-items: end;
-        display: flex;
-      }
-
-      /* Style for the "Read" button */
-      .read-button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        margin-left: auto;
-      }
-
-      /* Add hover effect for the "Read" button */
-      .read-button:hover {
-        background-color: #0056b3;
-      }
-    </style>
+    <link href="/style.css" rel="stylesheet" >
   </head>
   <body>
-    <nav>
-      <div class="navbar-logo">Blog</div>
+    <nav class=" text-white bg-[#333] w-full">
+      <div class="mx-auto max-w-5xl  flex justify-between px-10 py-10">
+        <div class="text-2xl bold">Blog</div>
       <div>
-        <ul class="navbar-items">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
+        <ul class="list-none p-0 flex">
+          <li class="mr-10 list-none"><a href="/">Home</a></li>
+          <li class="mr-10 list-none"><a href="/about">About</a></li>
+          <li class="mr-10 list-none"><a href="/blog">Blog</a></li>
+          <li class="mr-10 list-none"><a href="/contact">Contact</a></li>
         </ul>
       </div>
-    </nav>
-    <main>
-      <div class="add-btn">
-        <a href="/blog/new">
-          <button class="btn">Add Blog</button>
-        </a>
       </div>
-      <div class="blog-list">
-        <h1>POST</h1>
-        <ul>
+    </nav>
+    <main class=" bg-[url('/images/backgpost.jpg')] w-full h-screen bg-cover bg-center ">    
+       <div class=" p-10 mx-auto max-w-5xl ">
+        <h1 class="text-center font-bold">POST</h1>
+        <div class="flex justify-end items-end ">
+          <a  href="/blog/new">
+            <button class=" bg-slate-600 w-24 lg:w-32 px-3 py-2 rounded-lg">
+              Add Blog
+            </button>
+          </a>
+        </div>
+        <ul class="space-y-2">
           <% docs.forEach(function(doc){ %>
-          <li class="blog-item">
-            Blog Item - <%= doc.title %>
-            <button class="update-link">
-              <a href="<%= '/blog/update/' + doc._id %>">
-                Update
-              </a>
-            </button>
-            <button class="delete-link">
-              <a href="<%= '/blog/delete/' + doc._id %>">
-              Delete
-              </a>
-            </button>
-            <button class="read-button">
-              <a href="<%= '/blog/view/' + doc._id %>">
-                View
-              </a>
-            </button>
+          <li class="bg-slate-300 rounded p-4 flex flex-col justify-between">
+            <div class="">Blog Item - <%= doc.title %></div>
+            <div class="flex gap-3 w-full ">
+              <button class="">
+                <a href="<%= '/blog/update/' + doc._id %>">
+                  Update
+                </a>
+              </button>
+              <button class="">
+                <a href="<%= '/blog/delete/' + doc._id %>">
+                 Delete
+                </a>
+              </button>
+              <button class="">
+                <a href="<%= '/blog/view/' + doc._id %>">
+                  View
+                </a>
+              </button>
+            </div>
           </li>
           <% }); %>
         </ul>
       </div>
+       </div>
     </main>
   </body>
 </html>

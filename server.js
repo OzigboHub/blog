@@ -12,6 +12,8 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const db = new Datastore({ filename: 'database/model.txt', autoload: true });
 
 // Home Page
@@ -85,7 +87,6 @@ app.post('/blog/update/:id', (req, res) => {
     });
 });
 
-
 // Delete a blog by ID
 app.get('/blog/delete/:id', (req, res) => {
     const blogId = req.params.id;
@@ -97,8 +98,9 @@ app.get('/blog/delete/:id', (req, res) => {
 });
 
 //View blog by ID
-app.get('/blog/view/:id', (req, res) => {
+app.get('/blog/views/:id', (req, res) => {
     const blogId = req.params.id;
+    console.log('Requested blog ID:', blogId);
     db.findOne({ _id: blogId }, function (err, doc) {
         if (err) {
             res.redirect('/error', { error: 'Unable to read blog'});

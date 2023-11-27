@@ -7,8 +7,8 @@
     <link href="/style.css" rel="stylesheet" >
   </head>
   <body>
-    <nav class=" text-white bg-[#333] w-full">
-      <div class="mx-auto max-w-5xl  flex justify-between px-10 py-10">
+    <nav class="text-white bg-[#333] w-full">
+      <div class="mx-auto max-w-5xl flex justify-between px-10 py-10">
       <div class="text-2xl bold">Blog</div>
       <div>
         <ul class="list-none p-0 flex">
@@ -16,10 +16,12 @@
           <li class="mr-10 list-none"><a href="/about">About</a></li>
           <li class="mr-10 list-none"><a href="/blog">Blog</a></li>
           <li class="mr-10 list-none"><a href="/contact">Contact</a></li>
+          <li class="mr-10 list-none"><a href="/logout">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
-    <main class=" bg-[url('/images/backg.jpg')] w-full h-screen bg-cover bg-center">
+    <main class=" bg-[url('/images/backg.jpg')] w-full h-auto bg-cover bg-center">
       <div class=" p-10 mx-auto max-w-5xl ">
       <div class=" p-20 space-y-3 pt-44">
         <h1 class="text-4xl text-black">Your Thought on Reletionship</h1>
@@ -32,9 +34,26 @@
     </div>
     </main>
     <footer>
-      <div class="flex items-center justify-around my-6 border-t-2 border-gray-700">
-        <div><img src="" alt="" /></div>
-        <div><img src="" alt="" /></div>
+      <div class="flex items-center justify-around bg-[#333] border-t-2 border-gray-700">
+        <div class=" flex">
+          <div class="">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
+<path fill="#fff" d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"></path><path fill="#fff" d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z"></path><path fill="#cfd8dc" d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z"></path><path fill="#40c351" d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"></path><path fill="#fff" fill-rule="evenodd" d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z" clip-rule="evenodd"></path>
+</svg>
+          </div>
+          <div class="">
+           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 64 64">
+             <linearGradient id="tTOsNSj5sgZJwOoh7KQFTa_KeTtCQ_b-ZiV_gr1" x1="32" x2="32" y1="7.766" y2="56.935" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1a6dff"></stop><stop offset="1" stop-color="#c822ff"></stop></linearGradient><path fill="url(#tTOsNSj5sgZJwOoh7KQFTa_KeTtCQ_b-ZiV_gr1)" d="M51,8H13c-2.757,0-5,2.243-5,5v38c0,2.757,2.243,5,5,5h38c2.757,0,5-2.243,5-5V13	C56,10.243,53.757,8,51,8z M54,51c0,1.654-1.346,3-3,3H13c-1.654,0-3-1.346-3-3V13c0-1.654,1.346-3,3-3h38c1.654,0,3,1.346,3,3V51z"></path><linearGradient id="tTOsNSj5sgZJwOoh7KQFTb_KeTtCQ_b-ZiV_gr2" x1="33" x2="33" y1="19.34" y2="44.448" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#8cc5fc"></stop><stop offset="1" stop-color="#d5a8fb"></stop></linearGradient><path fill="url(#tTOsNSj5sgZJwOoh7KQFTb_KeTtCQ_b-ZiV_gr2)" d="M44,24c-3.309,0-6-2.691-6-6h-4v19c0,2.757-2.243,5-5,5s-5-2.243-5-5s2.243-5,5-5	c0.342,0,0.677,0.035,1,0.101v-4.042C29.671,28.022,29.338,28,29,28c-4.963,0-9,4.037-9,9s4.037,9,9,9s9-4.037,9-9V25.981	C39.674,27.242,41.748,28,44,28c0.676,0,1.344-0.072,2-0.207v-4.16C45.354,23.864,44.685,24,44,24z"></path>
+             </svg>
+          </div>
+          <div class="">
+           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50">
+             <polygon fill="#6189ff" points="16,2.483 10.002,5.946 10,5.945 10,33.66 34.001,47.516 40.001,44.052 40,16.34"></polygon><polygon fill="#577be6" points="40,16.34 16,2.483 10,5.947 34,19.804"></polygon><polygon fill="#4460b3" points="34,19.804 34.001,47.516 40.001,44.052 40,16.34"></polygon><polygon fill="#e6e6e6" points="22,40.588 22,31.351 19,29.619 19,25 22,26.732 22,20.959 25,19.226 30,22.113 30,26.732 26,24.423 26,29.041 30,31.351 29,35.392 26,33.66 26,42.898"></polygon>
+             </svg>
+          </div>
+          <div class="">
+          </div>    
+           </div>
       </div>
     </footer>
   </body>

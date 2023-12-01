@@ -215,7 +215,6 @@ app.get('/contact', checkLogin, (req, res) => {
     res.render("contact");
 });
 
-// Port Runing
 const port = process.env.PORT || 3022;
 
 app.listen(port, () => {

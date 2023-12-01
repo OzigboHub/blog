@@ -16,17 +16,9 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Middleware for sessions
-app.use(session({
-    secret: "ozigbo-emmanuel-key",
-    resave: true,
-    saveUninitialized: true
-}));
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new Datastore({ filename: 'database/model.txt', autoload: true });
-const dbUsers = new Datastore({ filename: 'database/user.txt', autoload: true });
 
 app.post('/createUser', (req, res) => {
     const userData = req.body;
@@ -54,36 +46,31 @@ app.get('/register', (req, res) => {
 });
 
 //Handle registration
-// ... other imports and configurations ...
-
-// Handle registration
 app.post('/register', (req, res) => {
     const { username, email, password } = req.body;
 
-    db.find({ email }, function (err, docs) {
-        if (!err) {
-            if (docs.length > 0) {
-                // User already exists
-                return res.render('error', { error: 'User already exists' });
-            }
-
-            // Assuming dbUsers is your database collection
-            // If you're using NeDB, make sure dbUsers is properly initialized
-            dbUsers.insert({ username, email, password }, function (err, newDocs) {
-                if (err) {
-                    return res.render('error', { error: 'Unable to create user' });
-                }
-
-                // User registration successful, create a session
-                req.session.user = { username, email }; // Store user information in the session
-                res.redirect('/login');
-            });
-        } else {
-            res.render('error', { error: 'Error checking user existence' });
-        }
-    });
+    //Check if username is already taken
+    if (users.some(user => user.username === username)) {
+        res.redirect('/register');
+    } else {
+        //Add user
+        users.push({ id: users.length + 1, username, email, password });
+        res.redirect('/login');
+    }
 });
 
+// Define the 'users' variable
+const users = [
+    { username: 'user1', password: 'pass1', id: 1 },
+    { username: 'user2', password: 'pass2', id: 2 },
+  ];
+  
+  // Middleware for sessions
+  app.use(session({
+    secret: "ozigbo-emmanuel-key",
+    resave: true,
+    saveUninitialized: true
+}));
   
   // Sample middleware for checking if the user is logged in
   const requireLogin = (req, res, next) => {

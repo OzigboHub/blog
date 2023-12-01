@@ -16,9 +16,17 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Middleware for sessions
+app.use(session({
+    secret: "ozigbo-emmanuel-key",
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new Datastore({ filename: 'database/model.txt', autoload: true });
+const dbUsers = new Datastore({ filename: 'database/user.txt', autoload: true });
 
 app.post('/createUser', (req, res) => {
     const userData = req.body;
@@ -49,28 +57,16 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     const { username, email, password } = req.body;
 
-    //Check if username is already taken
-    if (users.some(user => user.username === username)) {
-        res.redirect('/register');
-    } else {
-        //Add user
-        users.push({ id: users.length + 1, username, email, password });
-        res.redirect('/login');
-    }
+    db.find({ email }, function (err, docs) {
+        if(!err) res.redirect('/error', { error: 'User already exists' });
+        dbUsers.insert({ username, email, password }, function (err, newDocs) {
+            // Two documents were inserted in the database
+            // newDocs is an array with these documents, augmented with their _id
+            if(err) res.redirect('/error', { error: 'Unable to create blog' });
+            res.redirect('/login');
+        });
+    });
 });
-
-// Define the 'users' variable
-const users = [
-    { username: 'user1', password: 'pass1', id: 1 },
-    { username: 'user2', password: 'pass2', id: 2 },
-  ];
-  
-  // Middleware for sessions
-  app.use(session({
-    secret: "ozigbo-emmanuel-key",
-    resave: true,
-    saveUninitialized: true
-}));
   
   // Sample middleware for checking if the user is logged in
   const requireLogin = (req, res, next) => {

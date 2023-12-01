@@ -54,19 +54,36 @@ app.get('/register', (req, res) => {
 });
 
 //Handle registration
+// ... other imports and configurations ...
+
+// Handle registration
 app.post('/register', (req, res) => {
     const { username, email, password } = req.body;
 
     db.find({ email }, function (err, docs) {
-        if(!err) res.redirect('/error', { error: 'User already exists' });
-        dbUsers.insert({ username, email, password }, function (err, newDocs) {
-            // Two documents were inserted in the database
-            // newDocs is an array with these documents, augmented with their _id
-            if(err) res.redirect('/error', { error: 'Unable to create blog' });
-            res.redirect('/login');
-        });
+        if (!err) {
+            if (docs.length > 0) {
+                // User already exists
+                return res.render('error', { error: 'User already exists' });
+            }
+
+            // Assuming dbUsers is your database collection
+            // If you're using NeDB, make sure dbUsers is properly initialized
+            dbUsers.insert({ username, email, password }, function (err, newDocs) {
+                if (err) {
+                    return res.render('error', { error: 'Unable to create user' });
+                }
+
+                // User registration successful, create a session
+                req.session.user = { username, email }; // Store user information in the session
+                res.redirect('/login');
+            });
+        } else {
+            res.render('error', { error: 'Error checking user existence' });
+        }
     });
 });
+
   
   // Sample middleware for checking if the user is logged in
   const requireLogin = (req, res, next) => {
